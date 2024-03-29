@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>List of Employees</title>
+</h:head>
+<h:body>
+    <h2>List of Employees</h2>
+    <h:form>
+        <!-- Navigation Links -->
+        <h:commandLink value="Add Employee" action="affectation"/>
+        <h:outputText value=" | "/>
+        <h:commandLink value="Back to Home" action="home"/>
+
+        <!-- Employee List -->
+        <h:dataTable value="#{employeeBean.allEmployees}" var="emp" border="1">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{emp.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{emp.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{emp.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Skills</f:facet>
+                <h:outputText value="#{emp.skills}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Projects</f:facet>
+                <h:outputText value="#{emp.projects}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Actions</f:facet>
+                <h:commandButton value="Delete" action="#{employeeBean.deleteEmployee(emp)}" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>

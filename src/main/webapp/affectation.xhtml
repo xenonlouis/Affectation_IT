@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Assign Employee to Project</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h2>Assign Employee to Project</h2>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="employeeId" value="Employee Name: " />
+            <h:selectOneMenu id="employeeId" value="#{employeeBean.selectedEmployee}" required="true">
+                <f:selectItem itemLabel="Select Employee" itemValue="" />
+                <f:selectItems value="#{employeeBean.allEmployees}" var="emp" itemValue="#{emp}" itemLabel="#{emp.name}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel for="projectId" value="Project Name: " />
+            <h:selectOneMenu id="projectId" value="#{employeeBean.selectedProject}" required="true">
+                <f:selectItem itemLabel="Select Project" itemValue="" />
+                <f:selectItems value="#{employeeBean.allProjects}" var="proj" itemValue="#{proj}" itemLabel="#{proj.name}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel for="implication" value="Implication (%): " />
+            <h:inputText id="implication" value="#{employeeBean.implication}" required="true" type="number" min="0" max="100" step="5" />
+
+        </h:panelGrid>
+
+        <h:commandButton value="Assign" action="#{employeeBean.assignEmployeeToProject}" />
+    </h:form>
+</h:body>
+</html>
